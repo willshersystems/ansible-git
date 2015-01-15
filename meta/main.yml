@@ -1,0 +1,39 @@
+---
+galaxy_info:
+  author: Matt Willsher
+  description: Git client installation
+  company: Willsher Systems
+  license: LGPLv3
+  min_ansible_version: 1.2
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: opensuse
+    versions:
+    - all
+  - name: Amazon
+    versions:
+    - all
+  - name: FreeBSD
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: SLES
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - development
+  - networking
+  - web
+dependencies:
+  - role: willshersystems.apt
+    when: ansible_pkg_mgr == 'apt' and apt_has_run is not defined

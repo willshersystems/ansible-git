@@ -1,0 +1,19 @@
+---
+- name: Set OS dependent variables
+  include_vars: "{{ item }}"
+  with_first_found:
+   - "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml"
+   - "{{ ansible_distribution }}.yml"
+   - "{{ ansible_os_family }}_{{ ansible_distribution_major_version }}.yml"
+   - "{{ ansible_os_family }}.yml"
+   - defaults.yml
+
+- name: Install git
+  action: >
+    {{ ansible_pkg_mgr }}
+    name={{ git_package }}
+    state=installed
+
+- name: Register that this role has run
+  set_fact: git_has_run=true
+  when: git_has_run is not defined
