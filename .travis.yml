@@ -4,11 +4,11 @@ python: "2.7"
 
 before_install:
   # Make sure everything's up to date.
+  - sudo add-apt-repository ppa:ansible/ansible
+  - sudo apt-get install ansible
   - sudo apt-get update -qq
 
 install:
-  # Install Ansible.
-  - pip install ansible
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
